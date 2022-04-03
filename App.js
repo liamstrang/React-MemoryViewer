@@ -4,45 +4,26 @@ import { Provider as PaperProvider } from 'react-native-paper';
 import React, { useState, useMemo} from "react";
 import { AppContext } from './services/appContext';
 
+const users = require("./users/users.json")
+
+const AppStateProvider = props => {
+    const contextValue={...users}
+
+    return (
+        <AppContext.Provider value={contextValue}>
+          {props.children}
+        </AppContext.Provider>
+    );
+};
+
 export default function App() {
-  const [userDetails, setUserDetails] = useState(null)
-
-  const [user, setUser] = useState({
-      id: null,
-      name: '',
-      username: '',
-      password: '',
-      avatar: ''
-  })
-
-  const usersObject = {
-      id: user.id,
-      name: user.name, 
-      username: user.username, 
-      password: user.password,
-      avatar: user.avatar,
-      setUser: setUser
-  }
-
-  const [userList, setUserList] = useState([])
-
-  const users = {
-      userList: userList,
-      setUserList: setUserList
-  }
-
-  const UserProvided = useMemo(() => ({userDetails, setUserDetails}), [userDetails, setUserDetails])
-
-  const [updateHandler, setUpdateHandler] = useState(false)
-  const ProviderUpdateHandler = useMemo(() => ({updateHandler, setUpdateHandler}), [updateHandler, setUpdateHandler])
-
   return (
-    <AppContext.Provider value={{UserProvided, ProviderUpdateHandler, usersObject, users}}>
+    <AppStateProvider>
       <PaperProvider>
         <NavigationContainer>
           <Navigation/>
         </NavigationContainer>
       </PaperProvider>
-    </AppContext.Provider>
+    </AppStateProvider>
   );
 }
