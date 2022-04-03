@@ -5,13 +5,29 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 import {useNavigation} from '@react-navigation/native'
 import { AppContext } from '../services/appContext';
 
+
 const Login = ({navigation}) => {
   
   const UserProvider = useContext(AppContext)
-  useEffect(() => UserProvider.UserProvided.setUserDetails(null), [])
 
-  const [email, setEmail] = useState({ value: '', error: '' });
-  const [password, setPassword] = useState({ value: '', error: '' });
+  console.log(UserProvider.users)
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const[loginError, setLoginError] = useState('')
+  const[submitButton, setSubmitButton] = useState(false)
+
+  const loginSubmit = () => {
+    setSubmitButton(true);
+    setTimeout(function() {
+      if(UserProvider.users.find(u => u.email === email) && UserProvider.users.find(u => u.password === password)){
+        navigation.navigate('Profile')
+      }else{
+        setLoginError("Incorrect Email or Password")
+      }
+      setSubmitButton(false);
+    }, 800);
+  }
 
   const LoginPage = () => {
     return (
@@ -27,7 +43,7 @@ const Login = ({navigation}) => {
         label="Email"
         returnKeyType="next"
         value={email.value}
-        onChangeText={text => setEmail({ value: text, error: '' })}
+        onChangeText={text => setEmail(text)}
         autoCapitalize="none"
         autoCompleteType="email"
         textContentType="emailAddress"
@@ -43,13 +59,14 @@ const Login = ({navigation}) => {
         label="Password"
         returnKeyType="done"
         value={password.value}
-        onChangeText={text => setPassword({ value: text, error: '' })}
+        onChangeText={text => setPassword(text)}
         secureTextEntry
       />
+      {loginError ? <Text style={styles.error}>{loginError}</Text> : null}
     </View>
-    <Button style={styles.button} icon="account-key" mode="contained" onPress={console.log("Submitted")}>
+    {submitButton ? <Button style={styles.button} loading={true} /> : <Button style={styles.button} icon="account-key" mode="contained" onPress={loginSubmit}>
         Login
-    </Button>
+    </Button>}
     </KeyboardAvoidingView>
     
     )
@@ -86,6 +103,7 @@ const styles = StyleSheet.create({
     color: 'red',
     paddingHorizontal: 4,
     paddingTop: 4,
+    textAlign: 'center',
   },
   container: {
     flex: 1,
