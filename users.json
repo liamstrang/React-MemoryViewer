@@ -1,0 +1,14 @@
+{
+    "users":[
+        {
+            "email": "liam@liamstrang.com",
+            "password": "asdfasdf",
+            "avatar": "https://robohash.org/liam@liamstrang.com"
+        },
+        {
+            "email": "asdf@gmail.com",
+            "password": "asdfasdf",
+            "avatar": "https://robohash.org/asdf@gmail.com"
+        }
+    ]
+}
