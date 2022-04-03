@@ -13,7 +13,6 @@ import { Button, Headline} from 'react-native-paper';
 const Home = ({navigation}) => {
   
   const UserProvider = useContext(AppContext)
-  useEffect(() => UserProvider.UserProvided.setUserDetails(null), [])
 
   const HomePage = () => {
     return (
