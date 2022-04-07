@@ -11,7 +11,7 @@ const Login = ({navigation}) => {
   const UserProvider = useContext(AppContext)
 
   console.log(UserProvider.users)
-  const [email, setEmail] = useState('');
+  const [username, setusername] = useState('');
   const [password, setPassword] = useState('');
 
   const[loginError, setLoginError] = useState('')
@@ -20,10 +20,10 @@ const Login = ({navigation}) => {
   const loginSubmit = () => {
     setSubmitButton(true);
     setTimeout(function() {
-      if(UserProvider.users.find(u => u.email === email) && UserProvider.users.find(u => u.password === password)){
-        navigation.navigate('Profile')
+      if(UserProvider.users.find(u => u.username === username) && UserProvider.users.find(u => u.password === password)){
+        navigation.navigate('Profile', {user: username})
       }else{
-        setLoginError("Incorrect Email or Password")
+        setLoginError("Incorrect username or Password")
       }
       setSubmitButton(false);
     }, 800);
@@ -40,14 +40,14 @@ const Login = ({navigation}) => {
         selectionColor='#004ae6'
         underlineColor="transparent"
         mode="outlined"
-        label="Email"
+        label="username"
         returnKeyType="next"
-        value={email.value}
-        onChangeText={text => setEmail(text)}
+        value={username.value}
+        onChangeText={text => setusername(text)}
         autoCapitalize="none"
-        autoCompleteType="email"
-        textContentType="emailAddress"
-        keyboardType="email-address"
+        autoCompleteType="username"
+        textContentType="usernameAddress"
+        keyboardType="default"
       />
       </View>
       <View style={styles.formContainer}>

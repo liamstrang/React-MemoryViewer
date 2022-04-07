@@ -6,13 +6,21 @@ import {useNavigation} from '@react-navigation/native'
 import { AppContext } from '../services/appContext';
 
 
+const generateImages = (username) => {
+  let images = []
+  let url = "https://picsum.photos/seed/";
+  for(let i = 0; i < 20; i++){
+    images.push(url+username+i+"/400/400");
+  }
+  return images;
+}
+
+
 const Registration = ({navigation}) => {
   
   const UserProvider = useContext(AppContext)
 
-  console.log(UserProvider.users)
-
-  const [email, setEmail] = useState('');
+  const [username, setusername] = useState('');
   const [password, setPassword] = useState('');
 
   const[signupError, setSignupError] = useState('')
@@ -21,10 +29,10 @@ const Registration = ({navigation}) => {
   const loginSubmit = () => {
     setSubmitButton(true);
     setTimeout(function() {
-      if(UserProvider.users.find(u => u.email === email)){
-        setSignupError("Email Already Exists")
+      if(UserProvider.users.find(u => u.username === username)){
+        setSignupError("username Already Exists")
       }else{
-        UserProvider.users.push({"email": email, "password": password, "avatar": "https://robohash.org/"+email})
+        UserProvider.users.push({"username": username, "password": password, "avatar": "https://robohash.org/"+username, "memories": generateImages(username)})
         navigation.navigate('Login')
       }
       setSubmitButton(false);
@@ -42,14 +50,14 @@ const Registration = ({navigation}) => {
         selectionColor='#004ae6'
         underlineColor="transparent"
         mode="outlined"
-        label="Email"
+        label="Username"
         returnKeyType="next"
-        value={email.value}
-        onChangeText={text => setEmail(text)}
+        value={username.value}
+        onChangeText={text => setusername(text)}
         autoCapitalize="none"
-        autoCompleteType="email"
-        textContentType="emailAddress"
-        keyboardType="email-address"
+        autoCompleteType="username"
+        textContentType="usernameAddress"
+        keyboardType="default"
       />
       </View>
       <View style={styles.formContainer}>
