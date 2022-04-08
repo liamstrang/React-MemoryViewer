@@ -23,7 +23,7 @@ const Login = ({navigation}) => {
       if(UserProvider.users.find(u => u.username === username) && UserProvider.users.find(u => u.password === password)){
         navigation.navigate('Profile', {user: username})
       }else{
-        setLoginError("Incorrect username or Password")
+        setLoginError("Incorrect Username or Password")
       }
       setSubmitButton(false);
     }, 800);

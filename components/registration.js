@@ -10,7 +10,8 @@ const generateImages = (username) => {
   let images = []
   let url = "https://picsum.photos/seed/";
   for(let i = 0; i < 20; i++){
-    images.push(url+username+i+"/400/400");
+    let image = {src: url+username+i+"/400/400", width: 400, height: 400}
+    images.push(image);
   }
   return images;
 }
@@ -75,7 +76,7 @@ const Registration = ({navigation}) => {
       {signupError ? <Text style={styles.error}>{signupError}</Text> : null}
     </View>
     {submitButton ? <Button style={styles.button} loading={true} /> : <Button style={styles.button} icon="account-key" mode="contained" onPress={loginSubmit}>
-        Login
+        Register
     </Button>}
     </KeyboardAvoidingView>
     
