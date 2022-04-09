@@ -5,10 +5,11 @@ import {useNavigation} from '@react-navigation/native'
 import { AppContext } from '../services/appContext';
 
 
-const Memories = ({route, navigation}) => {
+const Profile = ({route, navigation}) => {
 
   const UserProvider = useContext(AppContext)
-  let { user } = route.params;
+  let user = route.params.user;
+  console.log(user)
   const userAccount = UserProvider.users.find(u => u.username === user)
   const profileImage = userAccount.avatar;
 
@@ -18,6 +19,7 @@ const Memories = ({route, navigation}) => {
         setSubmitButton(true);
         setTimeout(function() {
             navigation.navigate('Memories', {user: userAccount.username})
+            setSubmitButton(false);
         }, 800);
     }
 
@@ -79,4 +81,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Memories
+export default Profile
