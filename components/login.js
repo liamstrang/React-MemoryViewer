@@ -10,7 +10,6 @@ const Login = ({navigation}) => {
   
   const UserProvider = useContext(AppContext)
 
-  console.log(UserProvider.users)
   const [username, setusername] = useState('');
   const [password, setPassword] = useState('');
 
@@ -67,6 +66,9 @@ const Login = ({navigation}) => {
     {submitButton ? <Button style={styles.button} loading={true} /> : <Button style={styles.button} icon="account-key" mode="contained" onPress={loginSubmit}>
         Login
     </Button>}
+    <Button style={styles.button} icon="account-plus" mode="outlined" onPress={() => navigation.navigate('Registration')}>
+        Need an Account?
+    </Button>
     </KeyboardAvoidingView>
     
     )

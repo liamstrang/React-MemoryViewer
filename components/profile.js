@@ -8,7 +8,8 @@ import { AppContext } from '../services/appContext';
 const Memories = ({route, navigation}) => {
 
   const UserProvider = useContext(AppContext)
-  let { user } = route.params;
+  let user = route.params.user;
+  console.log(user)
   const userAccount = UserProvider.users.find(u => u.username === user)
   const profileImage = userAccount.avatar;
 
