@@ -8,6 +8,7 @@ import Home from '../components/home';
 import Profile from '../components/profile';
 import Registration from '../components/registration';
 import Login from '../components/login';
+import Memories from '../components/memories';
 
 
 const Stack = createStackNavigator();
@@ -23,6 +24,7 @@ const Navigation = () => {
                 <Stack.Screen name="Registration" component={Registration} />
                 <Stack.Screen name="Login" component={Login} />
                 <Stack.Screen name="Profile" component={Profile} />
+                <Stack.Screen name="Memories" component={Memories} />
             </Stack.Navigator>
     );
 }

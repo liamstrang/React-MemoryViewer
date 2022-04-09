@@ -4577,6 +4577,11 @@ react-native@0.64.3:
     whatwg-fetch "^3.0.0"
     ws "^6.1.4"
 
+react-photo-album@^1.12.0:
+  version "1.12.0"
+  resolved "https://registry.yarnpkg.com/react-photo-album/-/react-photo-album-1.12.0.tgz#37228394b05ef86117bdae790c3da8ef771d7b16"
+  integrity sha512-cghUouTlbam1Zt9kjqO7l3P1kzsgpCKQaeDIvfcmhggMtK+0FnXvApT71GJ39W2jtzI0aTnzi0RYmIU0ZJqSbg==
+
 react-refresh@^0.4.0:
   version "0.4.3"
   resolved "https://registry.yarnpkg.com/react-refresh/-/react-refresh-0.4.3.tgz#966f1750c191672e76e16c2efa569150cc73ab53"
