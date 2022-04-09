@@ -4,7 +4,7 @@ import { Headline } from 'react-native-paper';
 import {useNavigation} from '@react-navigation/native'
 import { AppContext } from '../services/appContext';
 
-import PhotoAlbum from "react-photo-album";
+import GridImageView from 'react-native-grid-image-viewer';
 
 
 const Memories = ({route, navigation}) => {
@@ -14,16 +14,19 @@ const Memories = ({route, navigation}) => {
   const userAccount = UserProvider.users.find(u => u.username === user)
   const memories = userAccount.memories;
 
+  console.log(memories)
+
   let usernameFixed = user.charAt(0).toUpperCase() + user.slice(1);
+
   const ProfilePage = () => {
     return (
-      <KeyboardAvoidingView>
-        <Text style={styles.header}>Welcome {usernameFixed}</Text>
-        <Text style={styles.subheader}>Here are your memories</Text>
-        <View style={{padding: 20}}>
-          <PhotoAlbum layout="rows" photos={memories} />
-        </View>
-      </KeyboardAvoidingView>
+      <>
+      <Text style={styles.headline_text}>Welcome {usernameFixed}</Text>
+      <Text style={styles.explore_text}>
+        Click on an image to view in full screen mode
+      </Text>
+        <GridImageView data={memories} />
+        </>
     )
   }
  
@@ -35,19 +38,20 @@ const Memories = ({route, navigation}) => {
 }
 
 const styles = StyleSheet.create({
-  header: {
-    fontSize: 26,
-    color: '#004ae6',
+  headline_text: {
+    color: 'black',
+    fontSize: 30,
     fontWeight: 'bold',
-    paddingVertical: 14,
-    textAlign: 'center'
+    marginTop: 50,
+    marginLeft: 20,
   },
-  subheader: {
-    fontSize: 19,
-    lineHeight: 26,
-    color: 'grey',
-    textAlign: 'center',
-    marginBottom: 14,
+  explore_text: {
+    marginTop: 5,
+    marginBottom: 10,
+    color: 'black',
+    marginLeft: 20,
+    fontSize: 12,
+    fontWeight: '600',
   },
 });
 
