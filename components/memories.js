@@ -14,8 +14,6 @@ const Memories = ({route, navigation}) => {
   const userAccount = UserProvider.users.find(u => u.username === user)
   const memories = userAccount.memories;
 
-  console.log(memories)
-
   let usernameFixed = user.charAt(0).toUpperCase() + user.slice(1);
 
   const ProfilePage = () => {

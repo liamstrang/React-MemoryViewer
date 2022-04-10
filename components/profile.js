@@ -9,7 +9,6 @@ const Memories = ({route, navigation}) => {
 
   const UserProvider = useContext(AppContext)
   let user = route.params.user;
-  console.log(user)
   const userAccount = UserProvider.users.find(u => u.username === user)
   const profileImage = userAccount.avatar;
 
@@ -19,6 +18,7 @@ const Memories = ({route, navigation}) => {
         setSubmitButton(true);
         setTimeout(function() {
             navigation.navigate('Memories', {user: userAccount.username})
+            setSubmitButton(false);
         }, 800);
     }
 
@@ -26,7 +26,7 @@ const Memories = ({route, navigation}) => {
 
   const ProfilePage = () => {
     return (
-      <KeyboardAvoidingView>
+      <KeyboardAvoidingView style={styles.container} behavior="padding">
         <Text style={styles.header}>Welcome {usernameFixed}!</Text>
         <View style={styles.container}>
             <Image style={styles.image} source={{uri: profileImage}}/>
