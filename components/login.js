@@ -20,7 +20,7 @@ const Login = ({navigation}) => {
     setSubmitButton(true);
     setTimeout(function() {
       if(UserProvider.users.find(u => u.username === username) && UserProvider.users.find(u => u.password === password)){
-        navigation.navigate('Profile', {user: username})
+        navigation.navigate('UserAccount', {user: username})
       }else{
         setLoginError("Incorrect Username or Password")
       }
@@ -45,7 +45,7 @@ const Login = ({navigation}) => {
         onChangeText={text => setusername(text)}
         autoCapitalize="none"
         autoCompleteType="username"
-        textContentType="usernameAddress"
+        textContentType="username"
         keyboardType="default"
       />
       </View>
@@ -56,6 +56,7 @@ const Login = ({navigation}) => {
         underlineColor="transparent"
         mode="outlined"
         label="Password"
+        textContentType="password"
         returnKeyType="done"
         value={password.value}
         onChangeText={text => setPassword(text)}

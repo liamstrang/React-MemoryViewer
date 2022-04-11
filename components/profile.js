@@ -5,7 +5,7 @@ import {useNavigation} from '@react-navigation/native'
 import { AppContext } from '../services/appContext';
 
 
-const Memories = ({route, navigation}) => {
+const UserAccount = ({route, navigation}) => {
 
   const UserProvider = useContext(AppContext)
   let user = route.params.user;
@@ -14,26 +14,19 @@ const Memories = ({route, navigation}) => {
 
   let usernameFixed = user.charAt(0).toUpperCase() + user.slice(1);
 
-    const loadMemories = () => {
-        setSubmitButton(true);
-        setTimeout(function() {
-            navigation.navigate('Memories', {user: userAccount.username})
-            setSubmitButton(false);
-        }, 800);
-    }
-
-    const[submitButton, setSubmitButton] = useState(false)
-
   const ProfilePage = () => {
     return (
       <KeyboardAvoidingView style={styles.container} behavior="padding">
         <Text style={styles.header}>Welcome {usernameFixed}!</Text>
-        <View style={styles.container}>
+        <View>
             <Image style={styles.image} source={{uri: profileImage}}/>
         </View>
-        {submitButton ? <Button style={styles.button} loading={true} /> : <Button style={styles.button} icon="account-key" mode="contained" onPress={loadMemories}>
-        View Memories
-        </Button>}      
+        <Text style={styles.subheader}>This is your profile page where you can view your memory albums!</Text>
+        <Text style={styles.subheader}>For the purpose of this assignment, each user is pre-populated with 20 random images</Text>
+        
+        <Button style={styles.button} icon="account-key" mode="contained" onPress={() => navigation.navigate('Home')}>
+        Logout
+        </Button>
     </KeyboardAvoidingView>
     )
   }
@@ -67,12 +60,11 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
-    padding: 20,
+    paddingTop: 80,
     width: '100%',
     maxWidth: 340,
     alignSelf: 'center',
     alignItems: 'center',
-    justifyContent: 'center',
   },
   button: {
     width: '100%',
@@ -80,4 +72,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Memories
+export default UserAccount

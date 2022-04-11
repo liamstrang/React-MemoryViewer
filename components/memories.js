@@ -1,10 +1,10 @@
 import React, {useState, useContext, useEffect} from 'react';
 import { StyleSheet, Text, KeyboardAvoidingView, View} from 'react-native';
-import { Headline } from 'react-native-paper';
 import {useNavigation} from '@react-navigation/native'
 import { AppContext } from '../services/appContext';
 
 import GridImageView from 'react-native-grid-image-viewer';
+
 
 
 const Memories = ({route, navigation}) => {
@@ -19,7 +19,7 @@ const Memories = ({route, navigation}) => {
   const ProfilePage = () => {
     return (
       <>
-      <Text style={styles.headline_text}>Welcome {usernameFixed}</Text>
+      <Text style={styles.headline_text}>{usernameFixed}'s Memories</Text>
       <Text style={styles.explore_text}>
         Click on an image to view in full screen mode
       </Text>
