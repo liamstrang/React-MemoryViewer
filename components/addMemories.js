@@ -1,7 +1,6 @@
 import React, {useState, useContext, useEffect} from 'react';
 import { View, StyleSheet, KeyboardAvoidingView, Image, Text, Keyboard} from 'react-native';
-import { TextInput as Input, Button} from 'react-native-paper';
-import { TouchableOpacity } from 'react-native-gesture-handler';
+import { TextInput as Input, Button, RadioButton } from 'react-native-paper';
 import {useNavigation} from '@react-navigation/native'
 import { AppContext } from '../services/appContext';
 
@@ -22,10 +21,13 @@ const Registration = ({route, navigation}) => {
   const UserProvider = useContext(AppContext)
   let { user } = route.params;
   const userAccount = UserProvider.users.find(u => u.username === user)
+  const memories = userAccount.memories;
 
   const [imageURL, setImageURL] = useState('/');
+  const [category, setCategory] = useState('travelling');
   const [submitButton, setSubmitButton] = useState(false);
   const [submitError, setSubmitError] = useState('');
+  
 
   const imageSubmit = () => {
     Keyboard.dismiss;
@@ -34,20 +36,18 @@ const Registration = ({route, navigation}) => {
         if(imageURL == '/' || imageURL == null){
             setSubmitError("Must Enter Something to Submit")
         }else{
-            userAccount.memories.push(imageURL)
+          if(category === 'travelling'){
+            memories['Travelling'].push(imageURL)
+            setImageURL('/');
+            navigation.navigate('Memories')
+          }else if(category === 'home')
+            memories['Home_Country'].push(imageURL)
             setImageURL('/');
             navigation.navigate('Memories')
         }
       setSubmitButton(false);
     }, 800);
   }
-
-  
-  const updateJSON = (value) => {
-    console.log(userAccount.memories)
-  }
-
-  updateJSON()
 
   const updateImageURL = (text) => {
     const baseURL = 'https://picsum.photos/seed/';
@@ -62,6 +62,11 @@ const Registration = ({route, navigation}) => {
       <Text style={styles.header}>Add New Memory</Text>
       <Text style={styles.subheader}>Enter any text, a random image will be generated</Text>
       <View style={styles.formContainer}>
+      <Text style={styles.radio}>Pick your album</Text>
+      <RadioButton.Group onValueChange={value => setCategory(value)} value={category}>
+        <RadioButton.Item label="Travelling Memories" value="travelling" />
+        <RadioButton.Item label="Home Country Memories" value="home" />
+      </RadioButton.Group>
       <Input
         style={styles.input}
         selectionColor='#004ae6'
@@ -98,9 +103,16 @@ const styles = StyleSheet.create({
     marginVertical: 12,
   },
   image: {
-    width: 400,
-    height: 400,
+    width: 300,
+    height: 300,
     marginBottom: 12,
+  },
+  radio: {
+    fontSize: 12,
+    lineHeight: 26,
+    color: 'grey',
+    textAlign: 'center',
+    marginBottom: 14,
   },
   input: {
     backgroundColor: 'white',

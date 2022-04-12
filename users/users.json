@@ -4,55 +4,32 @@
             "username": "liam",
             "password": "asdf",
             "avatar": "https://robohash.org/liam",
-            "memories": [
-                "https://picsum.photos/seed/liam1/400/400",
-                "https://picsum.photos/seed/liam2/400/400",
-                "https://picsum.photos/seed/liam3/400/400",
-                "https://picsum.photos/seed/liam4/400/400",
-                "https://picsum.photos/seed/liam5/400/400",
-                "https://picsum.photos/seed/liam6/400/400",
-                "https://picsum.photos/seed/liam7/400/400",
-                "https://picsum.photos/seed/liam8/400/400",
-                "https://picsum.photos/seed/liam9/400/400",
-                "https://picsum.photos/seed/liam10/400/400",
-                "https://picsum.photos/seed/liam11/400/400",
-                "https://picsum.photos/seed/liam12/400/400",
-                "https://picsum.photos/seed/liam13/400/400",
-                "https://picsum.photos/seed/liam14/400/400",
-                "https://picsum.photos/seed/liam15/400/400",
-                "https://picsum.photos/seed/liam16/400/400",
-                "https://picsum.photos/seed/liam17/400/400",
-                "https://picsum.photos/seed/liam18/400/400",
-                "https://picsum.photos/seed/liam19/400/400",
-                "https://picsum.photos/seed/liam20/400/400"
-            ]
-        },
-        {
-            "username": "strang",
-            "password": "asdfasdf",
-            "avatar": "https://robohash.org/strang",
-            "memories": [
-                "https://picsum.photos/seed/strang1/400/400",
-                "https://picsum.photos/seed/strang2/400/400",
-                "https://picsum.photos/seed/strang3/400/400",
-                "https://picsum.photos/seed/strang4/400/400",
-                "https://picsum.photos/seed/strang5/400/400",
-                "https://picsum.photos/seed/strang6/400/400",
-                "https://picsum.photos/seed/strang7/400/400",
-                "https://picsum.photos/seed/strang8/400/400",
-                "https://picsum.photos/seed/strang9/400/400",
-                "https://picsum.photos/seed/strang10/400/400",
-                "https://picsum.photos/seed/strang11/400/400",
-                "https://picsum.photos/seed/strang12/400/400",
-                "https://picsum.photos/seed/strang13/400/400",
-                "https://picsum.photos/seed/strang14/400/400",
-                "https://picsum.photos/seed/strang15/400/400",
-                "https://picsum.photos/seed/strang16/400/400",
-                "https://picsum.photos/seed/strang17/400/400",
-                "https://picsum.photos/seed/strang18/400/400",
-                "https://picsum.photos/seed/strang19/400/400",
-                "https://picsum.photos/seed/strang20/400/400"
-            ]
+            "memories": {
+                "Travelling" : [
+                    "https://picsum.photos/seed/liam1/400/400",
+                    "https://picsum.photos/seed/liam2/400/400",
+                    "https://picsum.photos/seed/liam3/400/400",
+                    "https://picsum.photos/seed/liam4/400/400",
+                    "https://picsum.photos/seed/liam5/400/400",
+                    "https://picsum.photos/seed/liam6/400/400",
+                    "https://picsum.photos/seed/liam7/400/400",
+                    "https://picsum.photos/seed/liam8/400/400",
+                    "https://picsum.photos/seed/liam9/400/400"
+                ],
+                "Home_Country" : [
+                    "https://picsum.photos/seed/liam10/400/400",
+                    "https://picsum.photos/seed/liam11/400/400",
+                    "https://picsum.photos/seed/liam12/400/400",
+                    "https://picsum.photos/seed/liam13/400/400",
+                    "https://picsum.photos/seed/liam14/400/400",
+                    "https://picsum.photos/seed/liam15/400/400",
+                    "https://picsum.photos/seed/liam16/400/400",
+                    "https://picsum.photos/seed/liam17/400/400",
+                    "https://picsum.photos/seed/liam18/400/400",
+                    "https://picsum.photos/seed/liam19/400/400",
+                    "https://picsum.photos/seed/liam20/400/400"
+                ]
+            }
         }
     ]
 }

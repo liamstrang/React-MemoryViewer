@@ -1,7 +1,8 @@
 import {Text} from 'react-native';
-import React, { useState, useMemo} from "react";
+import React, {useContext, useState} from "react";
 import { createStackNavigator, CardStyleInterpolators } from '@react-navigation/stack';
 import { AppContext } from '../services/appContext';
+import {useNavigation} from '@react-navigation/native'
 
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -20,8 +21,8 @@ import AddMemories from '../components/addMemories'
 const Stack = createStackNavigator();
 const Tab = createMaterialBottomTabNavigator();
 
-
-const TabNavigation = () => {
+const TabNavigation = ({route, navigation}) => {
+    const { user } = route.params;
     return (
           <Tab.Navigator initialRouteName="Profile" screenOptions={{
             tabBarActiveTintColor: '#e91e63',
@@ -29,7 +30,7 @@ const TabNavigation = () => {
             <Tab.Screen 
                 name="Profile" 
                 component={UserAccount}
-                initialParams={{user: 'liam'}}
+                initialParams={{ user: user }}
                 options={{
                     tabBarLabel: 'Profile', 
                     tabBarIcon: ({ color }) => (
@@ -40,7 +41,7 @@ const TabNavigation = () => {
             <Tab.Screen 
                 name="Add Memory" 
                 component={AddMemories}
-                initialParams={{user: 'liam'}}
+                initialParams={{ user: user }}
                 options={{
                     tabBarLabel: 'Add Memory', 
                     tabBarIcon: ({ color }) => (
@@ -50,8 +51,8 @@ const TabNavigation = () => {
 
             <Tab.Screen 
                 name="Memories" 
-                component={Memories} 
-                initialParams={{user: 'liam'}}
+                component={Memories}
+                initialParams={{ user: user }}
                     options={{
                         tabBarLabel: 'Memories', 
                         tabBarIcon: ({ color }) => (

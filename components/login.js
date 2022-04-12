@@ -19,7 +19,7 @@ const Login = ({navigation}) => {
   const loginSubmit = () => {
     setSubmitButton(true);
     setTimeout(function() {
-      if(UserProvider.users.find(u => u.username === username) && UserProvider.users.find(u => u.password === password)){
+      if(UserProvider.users.find(u => u.username === username && u.password === password)){
         navigation.navigate('UserAccount', {user: username})
       }else{
         setLoginError("Incorrect Username or Password")

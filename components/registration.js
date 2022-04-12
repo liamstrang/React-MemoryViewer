@@ -7,13 +7,18 @@ import { AppContext } from '../services/appContext';
 
 
 const generateImages = (username) => {
-  let images = []
+  let travelling = []
+  let home = []
   let url = "https://picsum.photos/seed/";
-  for(let i = 0; i < 20; i++){
-    let image = {src: url+username+i+"/400/400", width: 400, height: 400}
-    images.push(image);
+  for(let i = 0; i < 10; i++){
+    let image = url+username+i+"/400/400";
+    travelling.push(image);
   }
-  return images;
+  for(let i = 10; i < 20; i++){
+    let image = url+username+i+"/400/400";
+    home.push(image);
+  }
+  return {"Travelling": travelling, "Home_Country": home};
 }
 
 
