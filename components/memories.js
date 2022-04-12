@@ -26,12 +26,17 @@ const Memories = ({route, navigation}) => {
       setImages('');
       setImages(memories.Travelling);
     }
-    if(cat === 'Home Country'){
+    if(cat === 'Home_Country'){
       setImages('')
       setImages(memories.Home_Country);
     }
   }
-  
+
+  const deleteCategory = (category) => {
+    delete memories[category]
+    setImages('')
+  }
+
   const MemoryPage = () => {
     return (
       <>
@@ -41,9 +46,12 @@ const Memories = ({route, navigation}) => {
       </Text>
         <RadioButton.Group onValueChange={value => getCategory(value)} value={category}>
           <RadioButton.Item label="Travelling Memories" value="Travelling" />
-          <RadioButton.Item label="Home Country Memories" value="Home Country" />
+          <RadioButton.Item label="Home Country Memories" value="Home_Country" />
         </RadioButton.Group>
-        <GridImageView data={getImages} />
+        <Button style={styles.button} icon="delete" mode="contained" onPress={() => deleteCategory(category)}>
+        Delete Images in Category
+        </Button>
+        {getImages ? <GridImageView data={getImages} /> : <Text style={styles.header}>No Images</Text>}
         </>
         
     )
@@ -64,6 +72,14 @@ const styles = StyleSheet.create({
     marginTop: 50,
     marginLeft: 20,
   },
+  header: {
+    fontSize: 26,
+    color: '#004ae6',
+    fontWeight: 'bold',
+    paddingVertical: 14,
+    justifyContent: 'center',
+    alignSelf: 'center',
+  },
   explore_text: {
     marginTop: 5,
     marginBottom: 10,
@@ -74,6 +90,9 @@ const styles = StyleSheet.create({
   },
   button: {
     width: '80%',
+    position: 'relative',
+    justifyContent: 'center',
+    alignSelf: 'center',
     marginVertical: 10,
   },
 });
