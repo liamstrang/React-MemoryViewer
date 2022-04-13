@@ -27,10 +27,6 @@ const Home = ({navigation}) => {
         <Button style={styles.registerButton} labelStyle={{color: '#004ae6'}} icon="account-plus" mode="outlined" onPress={() => navigation.navigate("Registration")}>
           Register
         </Button>
-
-        <Button style={styles.registerButton} labelStyle={{color: '#004ae6'}} icon="account-plus" mode="outlined" onPress={() => navigation.navigate("UserAccount", {user: 'liam'})}>
-          Profile
-        </Button>
       </KeyboardAvoidingView>
          
          </>
