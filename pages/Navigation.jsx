@@ -59,6 +59,7 @@ const TabNavigation = ({route, navigation}) => {
                             <MaterialCommunityIcons name="image-album" color={color} size={20} /> 
                         ),
                 }}/>
+
           </Tab.Navigator>
     );
 }

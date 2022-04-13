@@ -1,5 +1,5 @@
-import React, {useState, useContext, useEffect} from 'react';
-import { StyleSheet, Text, KeyboardAvoidingView, View, Image} from 'react-native';
+import React, {useState, useContext} from 'react';
+import { StyleSheet, Text} from 'react-native';
 import {useNavigation} from '@react-navigation/native'
 import { AppContext } from '../services/appContext';
 
@@ -15,8 +15,8 @@ const Memories = ({route, navigation}) => {
   const userAccount = UserProvider.users.find(u => u.username === user)
   const memories = userAccount.memories;
 
-  const [getImages, setImages] = useState('')
-  const [category, setCategory] = useState('travelling');
+  const [getImages, setImages] = useState(memories['Travelling'])
+  const [category, setCategory] = useState('Travelling');
 
   let usernameFixed = user.charAt(0).toUpperCase() + user.slice(1);
 
@@ -24,16 +24,20 @@ const Memories = ({route, navigation}) => {
     setCategory(cat)
     if(cat === 'Travelling'){
       setImages('');
-      setImages(memories.Travelling);
+      if(memories.Travelling.length > 0){
+        setImages(memories.Travelling);
+      }
     }
     if(cat === 'Home_Country'){
       setImages('')
-      setImages(memories.Home_Country);
+      if(memories.Home_Country.length > 0){
+        setImages(memories.Home_Country);
+      }
     }
   }
 
   const deleteCategory = (category) => {
-    delete memories[category]
+    memories[category] = [];
     setImages('')
   }
 
@@ -48,10 +52,11 @@ const Memories = ({route, navigation}) => {
           <RadioButton.Item label="Travelling Memories" value="Travelling" />
           <RadioButton.Item label="Home Country Memories" value="Home_Country" />
         </RadioButton.Group>
-        <Button style={styles.button} icon="delete" mode="contained" onPress={() => deleteCategory(category)}>
+        {getImages ? <Button style={styles.button} icon="delete" mode="contained" onPress={() => deleteCategory(category)}>
         Delete Images in Category
-        </Button>
-        {getImages ? <GridImageView data={getImages} /> : <Text style={styles.header}>No Images</Text>}
+        </Button> : <></>}
+        {getImages ? <GridImageView data={getImages} /> : <><Button style={styles.button} icon="refresh" mode="contained" onPress={() => getCategory(category)}>Refresh</Button><Text style={styles.header}>No Images</Text></>}
+        {category ? <></> : <Text style={styles.header}>Select a Category</Text>}
         </>
         
     )

@@ -1,6 +1,6 @@
-import React, {useState, useContext, useEffect} from 'react';
+import React, {useContext} from 'react';
 import { StyleSheet, Text, KeyboardAvoidingView, View, Image} from 'react-native';
-import { Button, Headline } from 'react-native-paper';
+import { Button } from 'react-native-paper';
 import {useNavigation} from '@react-navigation/native'
 import { AppContext } from '../services/appContext';
 

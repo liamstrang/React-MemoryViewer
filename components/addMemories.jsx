@@ -1,4 +1,4 @@
-import React, {useState, useContext, useEffect} from 'react';
+import React, {useState, useContext} from 'react';
 import { View, StyleSheet, KeyboardAvoidingView, Image, Text, Keyboard} from 'react-native';
 import { TextInput as Input, Button, RadioButton } from 'react-native-paper';
 import {useNavigation} from '@react-navigation/native'
@@ -27,6 +27,12 @@ const Registration = ({route, navigation}) => {
   const [category, setCategory] = useState('travelling');
   const [submitButton, setSubmitButton] = useState(false);
   const [submitError, setSubmitError] = useState('');
+
+  const [text, setText] = useState('')
+  const changeHandler = (text) => {
+      updateImageURL(text)
+      setText(text)
+  }
   
 
   const imageSubmit = () => {
@@ -39,11 +45,14 @@ const Registration = ({route, navigation}) => {
           if(category === 'travelling'){
             memories['Travelling'].push(imageURL)
             setImageURL('/');
+            setText('')
             navigation.navigate('Memories')
-          }else if(category === 'home')
+          }else if(category === 'home'){
             memories['Home_Country'].push(imageURL)
             setImageURL('/');
+            setText('')
             navigation.navigate('Memories')
+          }
         }
       setSubmitButton(false);
     }, 800);
@@ -74,8 +83,8 @@ const Registration = ({route, navigation}) => {
         mode="outlined"
         label="Text"
         returnKeyType="next"
-        value={imageURL.value}
-        onChangeText={text => updateImageURL(text)}
+        value={text}
+        onChangeText={changeHandler}
         autoCapitalize="none"
         keyboardType="default"
       />

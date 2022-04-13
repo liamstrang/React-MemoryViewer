@@ -36,7 +36,7 @@ const Registration = ({navigation}) => {
     setSubmitButton(true);
     setTimeout(function() {
       if(UserProvider.users.find(u => u.username === username)){
-        setSignupError("username Already Exists")
+        setSignupError("Username Already Exists")
       }else{
         UserProvider.users.push({"username": username, "password": password, "avatar": "https://robohash.org/"+username, "memories": generateImages(username)})
         navigation.navigate('Login')
