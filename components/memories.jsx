@@ -71,7 +71,7 @@ const Memories = ({route, navigation}) => {
 
 const styles = StyleSheet.create({
   headline_text: {
-    color: 'black',
+    color: '#004ae6',
     fontSize: 30,
     fontWeight: 'bold',
     marginTop: 50,
