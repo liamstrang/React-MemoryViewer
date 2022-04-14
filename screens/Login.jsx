@@ -1,15 +1,21 @@
-import React, {useState, useContext, useEffect} from 'react';
-import { View, StyleSheet, KeyboardAvoidingView, Image, Text} from 'react-native';
+import React, {useState, useContext} from 'react';
+import { View, KeyboardAvoidingView, Image, Text} from 'react-native';
 import { TextInput as Input, Button} from 'react-native-paper';
-import { TouchableOpacity } from 'react-native-gesture-handler';
-import {useNavigation} from '@react-navigation/native'
 import { AppContext } from '../services/appContext';
 
+import styles from '../styles/loginStyles'
+
+/**
+@author Liam Strang - 45426392
+
+@description Screen to display the "Login" page. 
+*/
 
 const Login = ({navigation}) => {
   
+  //Fetch Current Users
   const UserProvider = useContext(AppContext)
-
+  
   const [username, setusername] = useState('');
   const [password, setPassword] = useState('');
 
@@ -28,8 +34,7 @@ const Login = ({navigation}) => {
     }, 800);
   }
 
-  const LoginPage = () => {
-    return (
+  return (
       <KeyboardAvoidingView style={styles.container} behavior="padding">
       <Image source={require('../assets/logo.png')} style={styles.image} />
       <Text style={styles.header}>Login</Text>
@@ -71,61 +76,7 @@ const Login = ({navigation}) => {
         Need an Account?
     </Button>
     </KeyboardAvoidingView>
-    
-    )
-  }
- 
-  return (
-    <>
-        {LoginPage()}
-    </>
-  );
+  )
 }
-
-const styles = StyleSheet.create({
-  formContainer: {
-    width: '100%',
-    marginVertical: 12,
-  },
-  image: {
-    width: 128,
-    height: 128,
-    marginBottom: 12,
-  },
-  input: {
-    backgroundColor: 'white',
-  },
-  header: {
-    fontSize: 26,
-    color: '#004ae6',
-    fontWeight: 'bold',
-    paddingVertical: 14,
-  },
-  error: {
-    fontSize: 14,
-    color: 'red',
-    paddingHorizontal: 4,
-    paddingTop: 4,
-    textAlign: 'center',
-  },
-  container: {
-    flex: 1,
-    padding: 20,
-    width: '100%',
-    maxWidth: 340,
-    alignSelf: 'center',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  button: {
-    width: '100%',
-    marginVertical: 10,
-  },
-  text: {
-    fontWeight: 'bold',
-    fontSize: 15,
-    lineHeight: 26,
-  },
-});
 
 export default Login

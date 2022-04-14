@@ -1,25 +1,12 @@
-import {Text} from 'react-native';
-import React, {useContext, useState} from "react";
-import { createStackNavigator, CardStyleInterpolators } from '@react-navigation/stack';
-import { AppContext } from '../services/appContext';
-import {useNavigation} from '@react-navigation/native'
-
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
-
-
-//Pages
-import Home from '../components/home';
-import UserAccount from '../components/profile';
-import Registration from '../components/registration';
-import Login from '../components/login';
-import Memories from '../components/memories';
-import AddMemories from '../components/addMemories'
-
-
-const Stack = createStackNavigator();
 const Tab = createMaterialBottomTabNavigator();
+
+//Screens
+import UserAccount from '../screens/Profile';
+import Memories from '../screens/Memories';
+import AddMemories from '../screens/AddMemories'
 
 const TabNavigation = ({route, navigation}) => {
     const { user } = route.params;
@@ -64,19 +51,4 @@ const TabNavigation = ({route, navigation}) => {
     );
 }
 
-const Navigation = () => {
-    return (
-            <Stack.Navigator
-                screenOptions={{
-                    cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
-                }}
-            >
-                <Stack.Screen name="Home" component={Home} />
-                <Stack.Screen name="Registration" component={Registration} />
-                <Stack.Screen name="Login" component={Login} />
-                <Stack.Screen name="UserAccount" component={TabNavigation} options={{headerShown: false}}/>
-            </Stack.Navigator>
-    );
-}
-
-export default Navigation
+export default TabNavigation

@@ -1,7 +1,7 @@
 import { NavigationContainer } from '@react-navigation/native';
-import Navigation from './pages/Navigation'
+import Navigation from './components/Navigation'
 import { Provider as PaperProvider } from 'react-native-paper';
-import React, { useState, useMemo} from "react";
+import React from "react";
 import { AppContext } from './services/appContext';
 
 const users = require("./users/users.json")
