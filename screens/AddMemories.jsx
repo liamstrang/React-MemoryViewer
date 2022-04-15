@@ -12,7 +12,6 @@ import styles from '../styles/addMemoriesStyles'
 @description Screen to display the "Add Memories" page. 
 */
 
-
 const AddMemories = ({route, navigation}) => {
   
   //Fetch Current User Profile
