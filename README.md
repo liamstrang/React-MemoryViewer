@@ -1,5 +1,5 @@
 
-# Liam Strang - 45426392 - Assignment 1
+# Task 2 - Liam Strang - 45426392
 
 ## Installation
 
