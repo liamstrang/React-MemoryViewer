@@ -1,35 +1,35 @@
 {
-    "users":[
-        {
-            "username": "liam",
-            "password": "asdf",
-            "avatar": "https://robohash.org/liam",
-            "memories": {
-                "Travelling" : [
-                    "https://picsum.photos/seed/liam1/400/400",
-                    "https://picsum.photos/seed/liam2/400/400",
-                    "https://picsum.photos/seed/liam3/400/400",
-                    "https://picsum.photos/seed/liam4/400/400",
-                    "https://picsum.photos/seed/liam5/400/400",
-                    "https://picsum.photos/seed/liam6/400/400",
-                    "https://picsum.photos/seed/liam7/400/400",
-                    "https://picsum.photos/seed/liam8/400/400",
-                    "https://picsum.photos/seed/liam9/400/400"
-                ],
-                "Home_Country" : [
-                    "https://picsum.photos/seed/liam10/400/400",
-                    "https://picsum.photos/seed/liam11/400/400",
-                    "https://picsum.photos/seed/liam12/400/400",
-                    "https://picsum.photos/seed/liam13/400/400",
-                    "https://picsum.photos/seed/liam14/400/400",
-                    "https://picsum.photos/seed/liam15/400/400",
-                    "https://picsum.photos/seed/liam16/400/400",
-                    "https://picsum.photos/seed/liam17/400/400",
-                    "https://picsum.photos/seed/liam18/400/400",
-                    "https://picsum.photos/seed/liam19/400/400",
-                    "https://picsum.photos/seed/liam20/400/400"
-                ]
-            }
-        }
-    ]
+  "users": [
+    {
+      "username": "liam",
+      "password": "asdf",
+      "avatar": "https://robohash.org/liam",
+      "memories": {
+        "Travelling": [
+          "https://picsum.photos/seed/liam1/400/400",
+          "https://picsum.photos/seed/liam2/400/400",
+          "https://picsum.photos/seed/liam3/400/400",
+          "https://picsum.photos/seed/liam4/400/400",
+          "https://picsum.photos/seed/liam5/400/400",
+          "https://picsum.photos/seed/liam6/400/400",
+          "https://picsum.photos/seed/liam7/400/400",
+          "https://picsum.photos/seed/liam8/400/400",
+          "https://picsum.photos/seed/liam9/400/400"
+        ],
+        "Home_Country": [
+          "https://picsum.photos/seed/liam10/400/400",
+          "https://picsum.photos/seed/liam11/400/400",
+          "https://picsum.photos/seed/liam12/400/400",
+          "https://picsum.photos/seed/liam13/400/400",
+          "https://picsum.photos/seed/liam14/400/400",
+          "https://picsum.photos/seed/liam15/400/400",
+          "https://picsum.photos/seed/liam16/400/400",
+          "https://picsum.photos/seed/liam17/400/400",
+          "https://picsum.photos/seed/liam18/400/400",
+          "https://picsum.photos/seed/liam19/400/400",
+          "https://picsum.photos/seed/liam20/400/400"
+        ]
+      }
+    }
+  ]
 }
