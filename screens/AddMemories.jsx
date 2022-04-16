@@ -74,7 +74,7 @@ const AddMemories = ({route, navigation}) => {
     <Input
       style={styles.input}
       selectionColor='#004ae6'
-      underlineColor="transparent"
+      underlineColor="transparent" 
       mode="outlined"
       label="Text"
       returnKeyType="next"
