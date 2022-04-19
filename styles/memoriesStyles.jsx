@@ -25,12 +25,30 @@ const styles = StyleSheet.create({
     fontWeight: "600",
   },
   button: {
-    width: "80%",
+    width: "90%",
     position: "relative",
     justifyContent: "center",
     alignSelf: "center",
     marginVertical: 10,
   },
+  input: {
+    backgroundColor: "white",
+    width: "95%",
+    justifyContent: "center",
+    alignSelf: "center",
+  },
+  error: {
+    fontSize: 14,
+    color: "red",
+    paddingHorizontal: 4,
+    paddingTop: 4,
+    textAlign: "center",
+  },
+  multipleButtons: {
+    flexDirection:"row", 
+    justifyContent: "center",
+    alignSelf: "center"
+  }
 });
 
 export default styles;

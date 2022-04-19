@@ -1,8 +1,8 @@
-import React, { useState, useContext } from "react";
-import { Text } from "react-native";
+import React, { useState, useContext, useEffect } from "react";
+import { Text, View } from "react-native";
 import { AppContext } from "../services/appContext";
 import GridImageView from "react-native-grid-image-viewer";
-import { Button, RadioButton } from "react-native-paper";
+import { Button, RadioButton, TextInput as Input } from "react-native-paper";
 
 //Memories Styling
 import styles from "../styles/memoriesStyles";
@@ -22,6 +22,9 @@ const Memories = ({ route, navigation }) => {
 
   const [getImages, setImages] = useState(memories["Travelling"]);
   const [category, setCategory] = useState("Travelling");
+  const [newImageText, setNewImageText] = useState('')
+  const [newImages, setNewImages] = useState(false)
+  const [editError, setEditError] = useState('')
 
   let usernameFixed = user.charAt(0).toUpperCase() + user.slice(1);
 
@@ -41,10 +44,33 @@ const Memories = ({ route, navigation }) => {
     }
   };
 
+  useEffect(() => {
+    setImages(memories[category])
+  },[newImageText]);
+
   const deleteCategory = (category) => {
     memories[category] = [];
     setImages("");
   };
+
+  const redoImages = (newImageText, category) => {
+    let url = "https://picsum.photos/seed/";
+    if(newImageText === '' || newImageText === null){
+      setEditError("You must enter something")
+      setTimeout(() => {
+        setEditError('')
+      }, 2000)
+    }else{
+      for(let i = 0; i < memories[category].length; i++){
+        memories[category][i] = url + newImageText + i + "/400/400";
+      }
+      setNewImages(false)
+      setImages("");
+      setImages(memories[category]);
+      setNewImageText("")
+    }
+    
+  }
 
   return (
     <>
@@ -60,6 +86,7 @@ const Memories = ({ route, navigation }) => {
         <RadioButton.Item label="Home Country Memories" value="Home_Country" />
       </RadioButton.Group>
       {getImages ? (
+        <>
         <Button
           style={styles.button}
           icon="delete"
@@ -68,6 +95,59 @@ const Memories = ({ route, navigation }) => {
         >
           Delete Images in Category
         </Button>
+      {newImages ? (
+            <>
+            <Input
+              style={styles.input}
+              selectionColor="#004ae6"
+              underlineColor="transparent"
+              mode="outlined"
+              placeholder="Enter any text and new images will be generated"
+              returnKeyType="next"
+              value={newImageText}
+              onChangeText={(newImageText) => setNewImageText(newImageText)}
+              autoCapitalize="none"
+              keyboardType="default"
+            />
+            {editError ? (
+              <Text style={styles.error}>{editError}</Text>
+            ):(
+              null
+            )}
+            <View style={styles.multipleButtons}>
+              <View>
+                <Button
+                  style={styles.button}
+                  icon="arrow-left"
+                  mode="contained"
+                  onPress={() => setNewImages(false)}
+                >
+                  Back
+                </Button>
+              </View>
+              <View>
+                <Button
+                  style={styles.button}
+                  icon="refresh"
+                  mode="contained"
+                  onPress={() => redoImages(newImageText, category)}
+                >
+                  Edit Images
+                </Button>
+              </View>
+            </View>
+            </>
+        ):(
+          <Button
+        style={styles.button}
+        icon="refresh"
+        mode="contained"
+        onPress={() => setNewImages(true)}
+      >
+        Edit Images
+      </Button>
+        )}
+      </>
       ) : (
         <></>
       )}
@@ -84,6 +164,7 @@ const Memories = ({ route, navigation }) => {
             Refresh
           </Button>
           <Text style={styles.header}>No Images</Text>
+          <Text style={styles.header}>Add Some Memories</Text>
         </>
       )}
       {category ? <></> : <Text style={styles.header}>Select a Category</Text>}
