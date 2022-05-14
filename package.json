@@ -7,7 +7,8 @@
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
-    "eject": "expo eject"
+    "eject": "expo eject",
+    "test": "jest"
   },
   "dependencies": {
     "@react-navigation/bottom-tabs": "^6.3.1",
@@ -33,8 +34,22 @@
     "react-photo-album": "^1.12.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.12.9",
-    "prettier": "2.6.2"
+    "@babel/core": "^7.9.6",
+    "@testing-library/react": "^11.2.7",
+    "fbjs-scripts": "^3.0.1",
+    "jest-expo": "^41.0.0",
+    "prettier": "2.6.2",
+    "react-test-renderer": "^16.14.0"
   },
-  "private": true
+  "private": true,
+  "jest": {
+    "preset": "jest-expo",
+    "transformIgnorePatterns": [
+      "node_modules/(?!(jest-)?react-native|@react-native|react-clone-referenced-element|@react-native-community|expo(nent)?|@expo(nent)?/.*|react-navigation|@react-navigation/.*|@unimodules/.*|unimodules|sentry-expo|native-base|@sentry/.*)"
+    ],
+    "transform": {
+      "\\.[jt]sx?$": "babel-jest"
+    },
+    "setupFiles": ["./jestSetup/jestSetup.js"]
+  }
 }
