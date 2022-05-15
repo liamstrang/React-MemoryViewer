@@ -3,6 +3,8 @@ import renderer from 'react-test-renderer';
 import Home from '../Home'
 import Registration from '../Registration'
 
+const users = require("./users/users.json");
+
 describe('Check Home Page', () => {
     it('Render Homepage', () => {
         const tree = renderer.create(<Home />).toJSON();

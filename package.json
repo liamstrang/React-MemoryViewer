@@ -50,6 +50,6 @@
     "transform": {
       "\\.[jt]sx?$": "babel-jest"
     },
-    "setupFiles": ["./jestSetup/jestSetup.js"]
+    "setupFiles": ["./jestSetup.js"]
   }
 }
