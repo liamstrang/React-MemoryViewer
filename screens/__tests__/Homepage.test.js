@@ -24,6 +24,10 @@ describe('Check Register Page', () => {
         const tree = renderer.create(<Registration />).toJSON();
         expect(tree.children[2].type).toBe('View')
     })
+    it('Render Register Image', () => {
+        const tree = renderer.create(<Registration />).toJSON();
+        expect(tree.children[0].props.source).toBe(1)
+    })
     it('Register Styling', () => {
         const json = renderer.create(<Registration/>).toJSON()
         expect(json.props.style[0].width).toBe('100%')
@@ -39,6 +43,10 @@ describe('Check Login Page', () => {
     it('Render Login Page', () => {
         const tree = renderer.create(<Login />).toJSON();
         expect(tree.children[2].type).toBe('View')
+    })
+    it('Render Login Image', () => {
+        const tree = renderer.create(<Login />).toJSON();
+        expect(tree.children[0].props.source).toBe(1)
     })
     it('Login Styling', () => {
         const json = renderer.create(<Login/>).toJSON()
