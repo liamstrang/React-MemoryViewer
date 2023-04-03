@@ -1,4 +1,4 @@
-# Task 2 - Liam Strang - 45426392
+# Memory Viewer and Reviewer
 
 ## Installation
 
